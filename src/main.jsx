@@ -40,20 +40,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/addnewproduct",
-        element: <AddNewProduct />,
+        element: <PrivateRoute><AddNewProduct /></PrivateRoute>,
       },
       {
         path: "/products/view/:productID",
-        element: <ViewProduct />,
+        element: <PrivateRoute> <ViewProduct /></PrivateRoute>,
       },
       {
         path: "/carts",
-        element: <Carts />,
+        element: <PrivateRoute>  <Carts /></PrivateRoute>,
       },
-      {
-        path: "/carts",
-        element: <Carts />,
-      },
+
     ],
   },
   {

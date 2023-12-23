@@ -2,7 +2,7 @@ import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const ViewProduct = () => {
@@ -53,7 +53,12 @@ const ViewProduct = () => {
             setQuantity(quantity - 1)
         }
     };
+    const navigate = useNavigate()
+
     const handleAddToCart = (product) => {
+        if (!currentUser?.email) {
+            navigate(-1)
+        }
         const cart = {
             selectedColor,
             selectedSize,

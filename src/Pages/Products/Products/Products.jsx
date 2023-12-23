@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import './Product.css';
 const Products = () => {
@@ -24,8 +24,11 @@ const Products = () => {
     const handleSizeChange = (event) => {
         setSelectedSize(event.target.value);
     };
-
+    const navigate = useNavigate()
     const handleAddToCart = (product) => {
+        if (!currentUser?.email) {
+            navigate(-1)
+        }
         const existingCartItem = carts.find((cartItem) => {
             return (
                 cartItem.selectedColor === selectedColor &&
