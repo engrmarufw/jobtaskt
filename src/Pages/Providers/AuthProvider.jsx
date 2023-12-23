@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
     const { data: users, isLoading: usersLoading, mutate: usersultate } = useSWR('https://jobtaskt-server.vercel.app/users', (url) => fetcher(url, token));
     const { data: currentUser, isLoading: currentUserIsLoading, mutate: currentUserMultate } = useSWR('https://jobtaskt-server.vercel.app/loggeduser', (url) => fetcher(url, token));
     const { data: products, isLoading: productsIsLoading, mutate: productsMultate } = useSWR('https://jobtaskt-server.vercel.app/products', (url) => fetcher(url, token));
-    const { data: carts, isLoading: cartsIsLoading, mutate: cartsMultate } = useSWR('https://jobtaskt-server.vercel.app/carts', (url) => fetcher(url, token));
+    const { data: carts, isLoading: cartsIsLoading, mutate: cartsMultate } = useSWR(`https://jobtaskt-server.vercel.app/carts?email=${currentUser?.email}`, (url) => fetcher(url, token));
     const ltheme = Cookies.get('themes');
 
     const handleCheckboxChange = () => {

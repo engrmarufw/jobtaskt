@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const ViewProduct = () => {
-    const { cartsMultate, carts } = useAuth()
+    const { cartsMultate, carts, currentUser } = useAuth()
     const { productID } = useParams()
     const [data, setData] = useState()
     const [quantity, setQuantity] = useState(1)
@@ -59,6 +59,7 @@ const ViewProduct = () => {
             selectedSize,
             quantity,
             product,
+            email: currentUser?.email
         };
         const isexist = carts?.find(item => item?.selectedColor === selectedColor && item?.selectedSize === selectedSize && item?.product?._id === product._id);
         if (isexist) {

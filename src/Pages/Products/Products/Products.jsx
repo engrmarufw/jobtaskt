@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import './Product.css';
 const Products = () => {
-    const { products, productsIsLoading, productsMultate, carts, cartsIsLoading, cartsMultate } = useAuth();
+    const { products, productsIsLoading, productsMultate, carts, cartsIsLoading, cartsMultate, currentUser } = useAuth();
     const [selectedColor, setSelectedColor] = useState(null);
     const [selectedSize, setSelectedSize] = useState(null);
     const [showsize, setshowsize] = useState(false);
@@ -65,6 +65,7 @@ const Products = () => {
                 selectedSize,
                 quantity: 1,
                 product,
+                email: currentUser?.email
             };
 
             axios.post(`https://jobtaskt-server.vercel.app/carts`, newCartItem)
