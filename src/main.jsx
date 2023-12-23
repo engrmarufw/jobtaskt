@@ -16,6 +16,7 @@ import ManageProducts from './Pages/Dashboard/ManageProducts/ManageProducts.jsx'
 import Home from './Pages/Home/Home/Home.jsx';
 import Products from './Pages/Products/Products/Products.jsx';
 import ViewProduct from './Pages/Products/Products/ViewProduct.jsx';
+import PrivateRoute from './Pages/ProtectedRoutes/PrivateRoute.jsx';
 import AuthProvider from './Pages/Providers/AuthProvider.jsx';
 const router = createBrowserRouter([
   {
