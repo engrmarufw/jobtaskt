@@ -27,7 +27,7 @@ const AddNewProduct = () => {
             longDetails,
             images
         };
-        axios.post(`http://localhost:5000/products`, product)
+        axios.post(`https://jobtaskt-server.vercel.app/products`, product)
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({
@@ -73,7 +73,7 @@ const AddNewProduct = () => {
             formData.append('images', files[i]);
         }
 
-        axios.post('http://localhost:5000/multiimguploadimgbb', formData, {
+        axios.post('https://jobtaskt-server.vercel.app/multiimguploadimgbb', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },

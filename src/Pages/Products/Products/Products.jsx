@@ -50,7 +50,7 @@ const Products = () => {
                 return cartItem;
             });
 
-            axios.put(`http://localhost:5000/carts/${existingCartItem._id}`, { quantity: existingCartItem.quantity + 1 })
+            axios.put(`https://jobtaskt-server.vercel.app/carts/${existingCartItem._id}`, { quantity: existingCartItem.quantity + 1 })
                 .then(res => {
                     setshowsize(false);
                     cartsMultate();
@@ -67,7 +67,7 @@ const Products = () => {
                 product,
             };
 
-            axios.post(`http://localhost:5000/carts`, newCartItem)
+            axios.post(`https://jobtaskt-server.vercel.app/carts`, newCartItem)
                 .then(res => {
                     setshowsize(false);
                     cartsMultate();

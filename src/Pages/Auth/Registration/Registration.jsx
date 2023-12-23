@@ -18,7 +18,7 @@ const Registration = () => {
         }
 
 
-        axios.post('http://localhost:5000/users', user)
+        axios.post('https://jobtaskt-server.vercel.app/users', user)
             .then(res => {
                 if (res.data === 'userexists') {
                     document.getElementById('my_modal_4').close()

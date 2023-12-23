@@ -9,7 +9,7 @@ const Carts = () => {
     const { carts, cartsIsLoading, cartsMultate } = useAuth();
     const handleIncrease = (id, quantity) => {
         if (quantity) {
-            axios.put(`http://localhost:5000/carts/${id}`, { quantity: quantity + 1 })
+            axios.put(`https://jobtaskt-server.vercel.app/carts/${id}`, { quantity: quantity + 1 })
                 .then(res => {
                     cartsMultate();
                 })
@@ -21,7 +21,7 @@ const Carts = () => {
 
     const handleDecrease = (id, quantity) => {
         if (quantity > 1) {
-            axios.put(`http://localhost:5000/carts/${id}`, { quantity: quantity - 1 })
+            axios.put(`https://jobtaskt-server.vercel.app/carts/${id}`, { quantity: quantity - 1 })
                 .then(res => {
                     cartsMultate();
                 })
@@ -39,7 +39,7 @@ const Carts = () => {
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/carts/${id}`)
+                axios.delete(`https://jobtaskt-server.vercel.app/carts/${id}`)
                     .then(res => {
                         if (res.data.deletedCount === 1) {
                             cartsMultate()

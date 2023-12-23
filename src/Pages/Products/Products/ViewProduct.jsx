@@ -11,7 +11,7 @@ const ViewProduct = () => {
     const [data, setData] = useState()
     const [quantity, setQuantity] = useState(1)
     useEffect(() => {
-        axios.get(`http://localhost:5000/products/${productID}`)
+        axios.get(`https://jobtaskt-server.vercel.app/products/${productID}`)
             .then(res => {
                 setData(res.data)
             })
@@ -62,7 +62,7 @@ const ViewProduct = () => {
         };
         const isexist = carts?.find(item => item?.selectedColor === selectedColor && item?.selectedSize === selectedSize && item?.product?._id === product._id);
         if (isexist) {
-            axios.put(`http://localhost:5000/carts/${isexist?._id}`, { quantity: parseInt(isexist?.quantity) + quantity })
+            axios.put(`https://jobtaskt-server.vercel.app/carts/${isexist?._id}`, { quantity: parseInt(isexist?.quantity) + quantity })
                 .then(res => {
                     cartsMultate();
                 })
@@ -72,7 +72,7 @@ const ViewProduct = () => {
 
         }
         else {
-            axios.post(`http://localhost:5000/carts`, cart)
+            axios.post(`https://jobtaskt-server.vercel.app/carts`, cart)
                 .then(res => {
                     if (res.data.insertedId) {
                         cartsMultate()

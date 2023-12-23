@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
 
     const loginwithemailpass = (user) => {
         return new Promise((resolve, reject) => {
-            axios.post('http://localhost:5000/login', user)
+            axios.post('https://jobtaskt-server.vercel.app/login', user)
                 .then(res => {
                     if (res.data.error === 'InvAlidPassword') {
                         Swal.fire(
@@ -50,10 +50,10 @@ const AuthProvider = ({ children }) => {
         }).then(res => res.json());
 
 
-    const { data: users, isLoading: usersLoading, mutate: usersultate } = useSWR('http://localhost:5000/users', (url) => fetcher(url, token));
-    const { data: currentUser, isLoading: currentUserIsLoading, mutate: currentUserMultate } = useSWR('http://localhost:5000/loggeduser', (url) => fetcher(url, token));
-    const { data: products, isLoading: productsIsLoading, mutate: productsMultate } = useSWR('http://localhost:5000/products', (url) => fetcher(url, token));
-    const { data: carts, isLoading: cartsIsLoading, mutate: cartsMultate } = useSWR('http://localhost:5000/carts', (url) => fetcher(url, token));
+    const { data: users, isLoading: usersLoading, mutate: usersultate } = useSWR('https://jobtaskt-server.vercel.app/users', (url) => fetcher(url, token));
+    const { data: currentUser, isLoading: currentUserIsLoading, mutate: currentUserMultate } = useSWR('https://jobtaskt-server.vercel.app/loggeduser', (url) => fetcher(url, token));
+    const { data: products, isLoading: productsIsLoading, mutate: productsMultate } = useSWR('https://jobtaskt-server.vercel.app/products', (url) => fetcher(url, token));
+    const { data: carts, isLoading: cartsIsLoading, mutate: cartsMultate } = useSWR('https://jobtaskt-server.vercel.app/carts', (url) => fetcher(url, token));
     const ltheme = Cookies.get('themes');
 
     const handleCheckboxChange = () => {
@@ -71,7 +71,7 @@ const AuthProvider = ({ children }) => {
             const themeNname = {
                 theme: "dark"
             }
-            axios.put(`http://localhost:5000/loggeduser/${currentUser._id}`, themeNname, {
+            axios.put(`https://jobtaskt-server.vercel.app/loggeduser/${currentUser._id}`, themeNname, {
                 headers: {
                     token
                 }
@@ -86,7 +86,7 @@ const AuthProvider = ({ children }) => {
             const themeNname = {
                 theme: "light"
             }
-            axios.put(`http://localhost:5000/loggeduser/${currentUser._id}`, themeNname, {
+            axios.put(`https://jobtaskt-server.vercel.app/loggeduser/${currentUser._id}`, themeNname, {
                 headers: {
                     token
                 }
